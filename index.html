@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenSource LaunchPad — Your Career Starts Here</title>
+    <meta name="description" content="A comprehensive guide for college students to kickstart their tech career through open source contributions. By Anand Reddy, Red Hat.">
+    <meta property="og:title" content="OpenSource LaunchPad">
+    <meta property="og:description" content="Your guide to launching a tech career through open source contributions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anandreddy1986.github.io/OpenSource_LaunchPad">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red-hat: #EE0000;
+            --red-dark: #CC0000;
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-card-hover: #1c2333;
+            --border: #30363d;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+            --accent-blue: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-purple: #bc8cff;
+            --accent-orange: #d29922;
+            --accent-cyan: #39d2c0;
+            --gradient-1: linear-gradient(135deg, #EE0000 0%, #ff6b35 100%);
+            --gradient-2: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(238, 0, 0, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(88, 166, 255, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 0 40px;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-logo svg { width: 28px; height: 28px; }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--text-primary); }
+
+        .nav-cta {
+            background: var(--red-hat);
+            color: #fff !important;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .nav-cta:hover { background: var(--red-dark); }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 40px 80px;
+            z-index: 1;
+        }
+
+        .hero-content { max-width: 800px; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(238, 0, 0, 0.1);
+            border: 1px solid rgba(238, 0, 0, 0.3);
+            color: #ff6b6b;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+
+        .hero h1 .gradient-text {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--red-hat);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--red-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(238, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--text-muted);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat { text-align: center; }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* Sections */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 100px 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-blue);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Why Open Source */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .why-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+
+        .why-card:hover {
+            border-color: var(--red-hat);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .why-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .why-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .why-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Roadmap / Journey */
+        .journey {
+            position: relative;
+        }
+
+        .journey-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--red-hat), var(--accent-blue), var(--accent-purple), var(--accent-green));
+            transform: translateX(-50%);
+        }
+
+        .journey-steps {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .journey-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .journey-step:nth-child(even) {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        .journey-step-content {
+            flex: 1;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+        }
+
+        .journey-step-content:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .journey-step-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--red-hat);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--red-hat);
+            flex-shrink: 0;
+            z-index: 2;
+        }
+
+        .journey-step-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .journey-step-content p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Programs */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .program-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+        }
+
+        .program-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-4px);
+        }
+
+        .program-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+
+        .badge-stipend { background: rgba(63, 185, 80, 0.15); color: var(--accent-green); }
+        .badge-mentorship { background: rgba(188, 140, 255, 0.15); color: var(--accent-purple); }
+        .badge-diversity { background: rgba(210, 153, 34, 0.15); color: var(--accent-orange); }
+
+        .program-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .program-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        .program-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 16px;
+        }
+
+        .program-link:hover { text-decoration: underline; }
+
+        /* Resources */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .resource-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .resource-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-3px);
+        }
+
+        .resource-card h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .resource-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .comparison-table th {
+            background: rgba(238, 0, 0, 0.1);
+            padding: 16px 24px;
+            text-align: left;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table td {
+            padding: 14px 24px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table tr:last-child td { border-bottom: none; }
+
+        .comparison-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+        /* About Speaker */
+        .speaker {
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 48px;
+        }
+
+        .speaker-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--red-hat), #ff6b35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 64px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .speaker-info h3 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .speaker-title {
+            font-size: 16px;
+            color: var(--red-hat);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .speaker-bio {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .speaker-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .speaker-tag {
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            color: var(--accent-blue);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(238, 0, 0, 0.08), rgba(88, 166, 255, 0.08));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 80px 40px;
+            margin: 0 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .cta-tagline {
+            margin-top: 32px;
+            font-size: 16px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid var(--border);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover { color: var(--text-primary); }
+
+        .footer-copy {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav { padding: 0 20px; }
+            .nav-links { display: none; }
+            .hero { padding: 100px 20px 60px; }
+            .hero-stats { gap: 24px; flex-wrap: wrap; }
+            section { padding: 60px 20px; }
+            .journey-line { display: none; }
+            .journey-step, .journey-step:nth-child(even) {
+                flex-direction: column;
+                text-align: left;
+            }
+            .speaker {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 32px;
+            }
+            .speaker-tags { justify-content: center; }
+            .cta-section { margin: 0 20px; padding: 60px 24px; }
+            .comparison-table { font-size: 13px; }
+            .comparison-table th, .comparison-table td { padding: 10px 14px; }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .animate-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                    <path d="M9 18c-4.51 2-5-2-7-2"/>
+                </svg>
+                OpenSource LaunchPad
+            </a>
+            <ul class="nav-links">
+                <li><a href="#why">Why Open Source</a></li>
+                <li><a href="#journey">Your Journey</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#speaker">About</a></li>
+                <li><a href="#start" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                Powered by Red Hat &amp; Open Source Community
+            </div>
+            <h1>
+                Your Career Starts<br>
+                <span class="gradient-text">In the Open</span>
+            </h1>
+            <p>
+                A hands-on guide for college students to build real-world skills, create a public portfolio, and launch a tech career through open source contributions.
+            </p>
+            <div class="hero-buttons">
+                <a href="#journey" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    Start Your Journey
+                </a>
+                <a href="https://github.com/anandreddy1986/OpenSource_LaunchPad" class="btn btn-secondary" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-label">Cloud Runs on Linux</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">97%</div>
+                    <div class="stat-label">Apps Use OSS Libraries</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4.1M+</div>
+                    <div class="stat-label">OSS Projects on GitHub</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Open Source -->
+    <section id="why">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">The Opportunity</div>
+                <h2 class="section-title">Why Open Source Changes Everything</h2>
+                <p class="section-subtitle">Open source is not charity work. It's how the world's best software is built, and it's your fastest path to a real career.</p>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-card animate-in">
+                    <div class="why-icon" style="background: rgba(238,0,0,0.1); color: var(--red-hat);">&#128187;</div>
+                    <h3>Real-World Code</h3>
+                    <p>Work on production-grade codebases used by millions. Learn architecture patterns, testing strategies, and engineering practices that classrooms don't teach.</p>
+                </div>
+                <div class="why-card animate-in">
+                    <div class="why-icon" style="background: rgba(63,185,80,0.1); color: var(--accent-green);">&#128188;</div>
+                    <h3>Public Portfolio</h3>
+                    <p>Every contribution is a permanent entry on your public profile. Recruiters can see your actual code, communication style, and problem-solving ability.</p>
+                </div>
+                <div class="why-card animate-in">
+                    <div class="why-icon" style="background: rgba(88,166,255,0.1); color: var(--accent-blue);">&#127891;</div>
+                    <h3>Free Mentorship</h3>
+                    <p>Get code reviews from senior engineers at top companies. Every pull request is a private tutoring session with an industry expert.</p>
+                </div>
+                <div class="why-card animate-in">
+                    <div class="why-icon" style="background: rgba(188,140,255,0.1); color: var(--accent-purple);">&#127758;</div>
+                    <h3>Global Network</h3>
+                    <p>Collaborate with developers worldwide. Build relationships that turn into referrals, job offers, and lifelong professional connections.</p>
+                </div>
+                <div class="why-card animate-in">
+                    <div class="why-icon" style="background: rgba(210,153,34,0.1); color: var(--accent-orange);">&#128640;</div>
+                    <h3>No Gatekeepers</h3>
+                    <p>No interview. No selection process. No waiting for a placement drive. Fork a repo and start contributing — today.</p>
+                </div>
+                <div class="why-card animate-in">
+                    <div class="why-icon" style="background: rgba(57,210,192,0.1); color: var(--accent-cyan);">&#128176;</div>
+                    <h3>Paid Opportunities</h3>
+                    <p>Programs like GSoC, Outreachy, and MLH Fellowship offer stipends for open source contributions. Get paid while you learn.</p>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <table class="comparison-table animate-in">
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Traditional Internship</th>
+                        <th>Open Source Path</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Access</td><td>Competitive, limited slots</td><td>Open to everyone, always</td></tr>
+                    <tr><td>Mentorship</td><td>Assigned mentor (if lucky)</td><td>Community-driven, global experts</td></tr>
+                    <tr><td>Schedule</td><td>Fixed hours, fixed duration</td><td>Flexible, self-paced</td></tr>
+                    <tr><td>Proof of Work</td><td>Reference letter</td><td>Public commit history</td></tr>
+                    <tr><td>Skill Breadth</td><td>One company's stack</td><td>Multiple projects & stacks</td></tr>
+                    <tr><td>Cost to Start</td><td>May require relocation</td><td>Laptop + internet</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Journey / Roadmap -->
+    <section id="journey">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Your Roadmap</div>
+                <h2 class="section-title">From Zero to First Contribution</h2>
+                <p class="section-subtitle">A step-by-step path that takes you from curious student to confident contributor.</p>
+            </div>
+
+            <div class="journey">
+                <div class="journey-line"></div>
+                <div class="journey-steps">
+                    <div class="journey-step animate-in">
+                        <div class="journey-step-content">
+                            <h3>Set Up Your Toolbox</h3>
+                            <p>Create a GitHub account. Install Git. Set up a code editor (VS Code is great for beginners). Learn the basics: clone, branch, commit, push.</p>
+                        </div>
+                        <div class="journey-step-number">1</div>
+                        <div style="flex:1"></div>
+                    </div>
+                    <div class="journey-step animate-in">
+                        <div style="flex:1"></div>
+                        <div class="journey-step-number">2</div>
+                        <div class="journey-step-content">
+                            <h3>Find Your First Project</h3>
+                            <p>Browse <strong>goodfirstissue.dev</strong>, <strong>up-for-grabs.net</strong>, or search GitHub for "good first issue" labels. Pick a project in a technology you want to learn.</p>
+                        </div>
+                    </div>
+                    <div class="journey-step animate-in">
+                        <div class="journey-step-content">
+                            <h3>Start Small — Docs, Tests, Typos</h3>
+                            <p>Your first PR doesn't need to be code. Fix a typo in documentation. Add a missing test case. Improve a README. This builds confidence and teaches the workflow.</p>
+                        </div>
+                        <div class="journey-step-number">3</div>
+                        <div style="flex:1"></div>
+                    </div>
+                    <div class="journey-step animate-in">
+                        <div style="flex:1"></div>
+                        <div class="journey-step-number">4</div>
+                        <div class="journey-step-content">
+                            <h3>Read the Codebase</h3>
+                            <p>Spend time reading code, not just writing it. Understand the architecture. Follow how data flows. Read existing pull requests to learn how experienced developers think.</p>
+                        </div>
+                    </div>
+                    <div class="journey-step animate-in">
+                        <div class="journey-step-content">
+                            <h3>Tackle a Real Issue</h3>
+                            <p>Pick a bug or feature request from the issue tracker. Ask questions in the comments. Submit a PR. Respond to code review feedback. Iterate until it's merged.</p>
+                        </div>
+                        <div class="journey-step-number">5</div>
+                        <div style="flex:1"></div>
+                    </div>
+                    <div class="journey-step animate-in">
+                        <div style="flex:1"></div>
+                        <div class="journey-step-number">6</div>
+                        <div class="journey-step-content">
+                            <h3>Build Consistency</h3>
+                            <p>Aim for 1-2 contributions per month. Join the project's Discord/Slack. Help others in forums. Over 6 months, you'll have a portfolio that speaks louder than any resume.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs -->
+    <section id="programs">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Opportunities</div>
+                <h2 class="section-title">Programs That Pay You to Contribute</h2>
+                <p class="section-subtitle">Structured programs with stipends, mentorship, and real-world experience.</p>
+            </div>
+
+            <div class="programs-grid">
+                <div class="program-card animate-in">
+                    <span class="program-badge badge-stipend">Stipend: ~$1500-$3300</span>
+                    <h3>Google Summer of Code (GSoC)</h3>
+                    <p>Work on a 10-22 week project with an open source organization. Mentored by experienced developers. Open to students and beginners worldwide.</p>
+                    <a href="https://summerofcode.withgoogle.com/" class="program-link" target="_blank">Learn More &rarr;</a>
+                </div>
+                <div class="program-card animate-in">
+                    <span class="program-badge badge-diversity">Diversity & Inclusion</span>
+                    <h3>Outreachy</h3>
+                    <p>Paid internships in open source for people underrepresented in tech. 3-month remote internships with stipend. Two cohorts per year.</p>
+                    <a href="https://www.outreachy.org/" class="program-link" target="_blank">Learn More &rarr;</a>
+                </div>
+                <div class="program-card animate-in">
+                    <span class="program-badge badge-mentorship">Fellowship Program</span>
+                    <h3>MLH Fellowship</h3>
+                    <p>12-week internship alternative where you contribute to open source projects. Multiple tracks: Open Source, Production Engineering, and more.</p>
+                    <a href="https://fellowship.mlh.io/" class="program-link" target="_blank">Learn More &rarr;</a>
+                </div>
+                <div class="program-card animate-in">
+                    <span class="program-badge badge-stipend">Stipend Available</span>
+                    <h3>Linux Foundation Mentorship</h3>
+                    <p>Mentorship programs for open source projects under the Linux Foundation. Work on cloud-native, networking, and kernel projects.</p>
+                    <a href="https://lfx.linuxfoundation.org/tools/mentorship/" class="program-link" target="_blank">Learn More &rarr;</a>
+                </div>
+                <div class="program-card animate-in">
+                    <span class="program-badge badge-mentorship">Community Driven</span>
+                    <h3>GitHub Sponsors</h3>
+                    <p>Get funded for your own open source projects. Once you build a following around your work, the community can financially support your efforts.</p>
+                    <a href="https://github.com/sponsors" class="program-link" target="_blank">Learn More &rarr;</a>
+                </div>
+                <div class="program-card animate-in">
+                    <span class="program-badge badge-stipend">Competition</span>
+                    <h3>Hacktoberfest</h3>
+                    <p>Annual month-long celebration of open source in October. Make 4 quality contributions and earn recognition. Perfect starting point for beginners.</p>
+                    <a href="https://hacktoberfest.com/" class="program-link" target="_blank">Learn More &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Quick Links</div>
+                <h2 class="section-title">Resources to Get You Started</h2>
+                <p class="section-subtitle">Bookmark these. You'll need them.</p>
+            </div>
+
+            <div class="resources-grid">
+                <a href="https://goodfirstissue.dev/" class="resource-card animate-in" target="_blank">
+                    <h4>Good First Issue</h4>
+                    <p>Curated list of beginner-friendly issues across popular open source projects.</p>
+                </a>
+                <a href="https://up-for-grabs.net/" class="resource-card animate-in" target="_blank">
+                    <h4>Up For Grabs</h4>
+                    <p>Projects with tasks specifically tagged for new contributors.</p>
+                </a>
+                <a href="https://www.firsttimersonly.com/" class="resource-card animate-in" target="_blank">
+                    <h4>First Timers Only</h4>
+                    <p>A guide and collection of issues reserved exclusively for first-time contributors.</p>
+                </a>
+                <a href="https://opensource.guide/" class="resource-card animate-in" target="_blank">
+                    <h4>Open Source Guides</h4>
+                    <p>GitHub's official guide to making and maintaining open source projects.</p>
+                </a>
+                <a href="https://learngitbranching.js.org/" class="resource-card animate-in" target="_blank">
+                    <h4>Learn Git Branching</h4>
+                    <p>Interactive visual tutorial to master Git branching and commands.</p>
+                </a>
+                <a href="https://www.redhat.com/en/topics/open-source/what-is-open-source" class="resource-card animate-in" target="_blank">
+                    <h4>Red Hat: What is Open Source?</h4>
+                    <p>Understand the philosophy, licensing, and business of open source software.</p>
+                </a>
+                <a href="https://github.com/anandreddy1986" class="resource-card animate-in" target="_blank">
+                    <h4>Connect on GitHub</h4>
+                    <p>Follow Anand Reddy on GitHub for open source projects and resources.</p>
+                </a>
+                <a href="https://www.linkedin.com/in/anand-reddy-4331a213/" class="resource-card animate-in" target="_blank">
+                    <h4>Connect on LinkedIn</h4>
+                    <p>Reach out for mentorship, guidance, or collaboration opportunities.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speaker -->
+    <section id="speaker">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Your Guide</div>
+                <h2 class="section-title">About the Speaker</h2>
+            </div>
+
+            <div class="speaker animate-in">
+                <div class="speaker-photo">AR</div>
+                <div class="speaker-info">
+                    <h3>Anand Reddy</h3>
+                    <div class="speaker-title">Product & Technology Leader at Red Hat</div>
+                    <p class="speaker-bio">
+                        With over 17 years in the technology industry, Anand is a Tech Lead and Architect at Red Hat &mdash; a company built entirely on the foundation of open source. He holds <strong>two US patents</strong> on cloud-native backup and optimization systems, is an <strong>AWS Certified Solutions Architect</strong>, and holds certifications from VMware and Dell EMC.
+                    </p>
+                    <p class="speaker-bio">
+                        An alumnus of <strong>PES College of Engineering</strong>, Anand actively writes about open-source supply chain security, Linux filesystem architecture, and enterprise AI strategy. He mentors students and early-career professionals, helping them build careers through open source contributions.
+                    </p>
+                    <div class="speaker-tags">
+                        <span class="speaker-tag">Red Hat</span>
+                        <span class="speaker-tag">2x US Patent Holder</span>
+                        <span class="speaker-tag">AWS Certified</span>
+                        <span class="speaker-tag">Open Source Advocate</span>
+                        <span class="speaker-tag">Linux &amp; Cloud-Native</span>
+                        <span class="speaker-tag">AI Infrastructure</span>
+                        <span class="speaker-tag">PES Alumni</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="start">
+        <div class="cta-section animate-in">
+            <h2>Ready to Launch?</h2>
+            <p>Your first pull request is one click away. Don't wait for permission &mdash; start building.</p>
+            <div class="hero-buttons">
+                <a href="https://github.com/anandreddy1986/OpenSource_LaunchPad" class="btn btn-primary" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    Fork This Repo
+                </a>
+                <a href="https://goodfirstissue.dev/" class="btn btn-secondary" target="_blank">
+                    Find Your First Issue
+                </a>
+            </div>
+            <p class="cta-tagline">"Think like an Architect. Lead like a Visionary. Own your career like a CEO."</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/anandreddy1986" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/anand-reddy-4331a213/" target="_blank">LinkedIn</a>
+            <a href="https://presalesforce.wordpress.com" target="_blank">Blog</a>
+            <a href="https://www.redhat.com" target="_blank">Red Hat</a>
+        </div>
+        <p class="footer-copy">
+            &copy; 2026 Anand Reddy | OpenSource LaunchPad | Built with open source principles
+        </p>
+    </footer>
+
+    <script>
+        // Scroll animation observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
