@@ -16,7 +16,7 @@ A comprehensive guide for college students to build real-world skills, create a 
 
 ## About
 
-Created by **Anand Reddy** — Product & Technology Leader at **Red Hat**, 2x US Patent Holder, AWS Certified Solutions Architect, and open source advocate with 17+ years in the industry.
+Created by **Anand Reddy** — Product & Technology Leader, 2x US Patent Holder, AWS Certified Solutions Architect, and open source advocate with 17+ years in the industry.
 
 This project supports college outreach tech talks across engineering colleges in Karnataka and Tamil Nadu, helping upcoming graduates discover open source as a career launchpad.
 

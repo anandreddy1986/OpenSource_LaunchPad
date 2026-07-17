@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenSource LaunchPad — Your Career Starts Here</title>
-    <meta name="description" content="A comprehensive guide for college students to kickstart their tech career through open source contributions. By Anand Reddy, Red Hat.">
+    <meta name="description" content="A comprehensive guide for college students to kickstart their tech career through open source contributions. By Anand Reddy.">
     <meta property="og:title" content="OpenSource LaunchPad">
     <meta property="og:description" content="Your guide to launching a tech career through open source contributions.">
     <meta property="og:type" content="website">
@@ -14,8 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --red-hat: #EE0000;
-            --red-dark: #CC0000;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
             --bg-dark: #0d1117;
             --bg-card: #161b22;
             --bg-card-hover: #1c2333;
@@ -28,7 +28,7 @@
             --accent-purple: #bc8cff;
             --accent-orange: #d29922;
             --accent-cyan: #39d2c0;
-            --gradient-1: linear-gradient(135deg, #EE0000 0%, #ff6b35 100%);
+            --gradient-1: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
             --gradient-2: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
         }
 
@@ -49,7 +49,7 @@
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
             background-image:
-                radial-gradient(circle at 25% 25%, rgba(238, 0, 0, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 25% 25%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
                 radial-gradient(circle at 75% 75%, rgba(88, 166, 255, 0.03) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
@@ -104,7 +104,7 @@
         .nav-links a:hover { color: var(--text-primary); }
 
         .nav-cta {
-            background: var(--red-hat);
+            background: var(--primary);
             color: #fff !important;
             padding: 8px 20px;
             border-radius: 6px;
@@ -112,7 +112,7 @@
             transition: background 0.2s;
         }
 
-        .nav-cta:hover { background: var(--red-dark); }
+        .nav-cta:hover { background: var(--primary-dark); }
 
         /* Hero */
         .hero {
@@ -132,9 +132,9 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(238, 0, 0, 0.1);
-            border: 1px solid rgba(238, 0, 0, 0.3);
-            color: #ff6b6b;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            color: #93b4f8;
             padding: 6px 16px;
             border-radius: 20px;
             font-size: 13px;
@@ -187,14 +187,14 @@
         }
 
         .btn-primary {
-            background: var(--red-hat);
+            background: var(--primary);
             color: #fff;
         }
 
         .btn-primary:hover {
-            background: var(--red-dark);
+            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(238, 0, 0, 0.3);
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.3);
         }
 
         .btn-secondary {
@@ -291,7 +291,7 @@
         }
 
         .why-card:hover {
-            border-color: var(--red-hat);
+            border-color: var(--primary);
             transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
@@ -330,7 +330,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, var(--red-hat), var(--accent-blue), var(--accent-purple), var(--accent-green));
+            background: linear-gradient(to bottom, var(--primary), var(--accent-blue), var(--accent-purple), var(--accent-green));
             transform: translateX(-50%);
         }
 
@@ -369,13 +369,13 @@
             height: 48px;
             border-radius: 50%;
             background: var(--bg-card);
-            border: 2px solid var(--red-hat);
+            border: 2px solid var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
             font-size: 18px;
-            color: var(--red-hat);
+            color: var(--primary);
             flex-shrink: 0;
             z-index: 2;
         }
@@ -501,7 +501,7 @@
         }
 
         .comparison-table th {
-            background: rgba(238, 0, 0, 0.1);
+            background: rgba(37, 99, 235, 0.1);
             padding: 16px 24px;
             text-align: left;
             font-size: 13px;
@@ -537,7 +537,7 @@
             width: 200px;
             height: 200px;
             border-radius: 16px;
-            background: linear-gradient(135deg, var(--red-hat), #ff6b35);
+            background: linear-gradient(135deg, var(--primary), #7c3aed);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -555,7 +555,7 @@
 
         .speaker-title {
             font-size: 16px;
-            color: var(--red-hat);
+            color: var(--primary);
             font-weight: 600;
             margin-bottom: 16px;
         }
@@ -586,7 +586,7 @@
         /* CTA */
         .cta-section {
             text-align: center;
-            background: linear-gradient(135deg, rgba(238, 0, 0, 0.08), rgba(88, 166, 255, 0.08));
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(88, 166, 255, 0.08));
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 80px 40px;
@@ -713,7 +713,7 @@
         <div class="hero-content">
             <div class="hero-badge">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                Powered by Red Hat &amp; Open Source Community
+                Built for Students, by the Open Source Community
             </div>
             <h1>
                 Your Career Starts<br>
@@ -760,7 +760,7 @@
 
             <div class="why-grid">
                 <div class="why-card animate-in">
-                    <div class="why-icon" style="background: rgba(238,0,0,0.1); color: var(--red-hat);">&#128187;</div>
+                    <div class="why-icon" style="background: rgba(37,99,235,0.1); color: var(--primary);">&#128187;</div>
                     <h3>Real-World Code</h3>
                     <p>Work on production-grade codebases used by millions. Learn architecture patterns, testing strategies, and engineering practices that classrooms don't teach.</p>
                 </div>
@@ -957,9 +957,9 @@
                     <h4>Learn Git Branching</h4>
                     <p>Interactive visual tutorial to master Git branching and commands.</p>
                 </a>
-                <a href="https://www.redhat.com/en/topics/open-source/what-is-open-source" class="resource-card animate-in" target="_blank">
-                    <h4>Red Hat: What is Open Source?</h4>
-                    <p>Understand the philosophy, licensing, and business of open source software.</p>
+                <a href="https://opensource.org/osd" class="resource-card animate-in" target="_blank">
+                    <h4>Open Source Definition (OSI)</h4>
+                    <p>Understand the philosophy, licensing, and principles behind open source software.</p>
                 </a>
                 <a href="https://github.com/anandreddy1986" class="resource-card animate-in" target="_blank">
                     <h4>Connect on GitHub</h4>
@@ -985,15 +985,14 @@
                 <div class="speaker-photo">AR</div>
                 <div class="speaker-info">
                     <h3>Anand Reddy</h3>
-                    <div class="speaker-title">Product & Technology Leader at Red Hat</div>
+                    <div class="speaker-title">Product & Technology Leader | 17+ Years in Enterprise Tech</div>
                     <p class="speaker-bio">
-                        With over 17 years in the technology industry, Anand is a Tech Lead and Architect at Red Hat &mdash; a company built entirely on the foundation of open source. He holds <strong>two US patents</strong> on cloud-native backup and optimization systems, is an <strong>AWS Certified Solutions Architect</strong>, and holds certifications from VMware and Dell EMC.
+                        With over 17 years in the technology industry, Anand is a seasoned Tech Lead and Architect with deep roots in the open source ecosystem. He holds <strong>two US patents</strong> on cloud-native backup and optimization systems, is an <strong>AWS Certified Solutions Architect</strong>, and holds certifications from VMware and Dell EMC.
                     </p>
                     <p class="speaker-bio">
                         An alumnus of <strong>PES College of Engineering</strong>, Anand actively writes about open-source supply chain security, Linux filesystem architecture, and enterprise AI strategy. He mentors students and early-career professionals, helping them build careers through open source contributions.
                     </p>
                     <div class="speaker-tags">
-                        <span class="speaker-tag">Red Hat</span>
                         <span class="speaker-tag">2x US Patent Holder</span>
                         <span class="speaker-tag">AWS Certified</span>
                         <span class="speaker-tag">Open Source Advocate</span>
@@ -1030,7 +1029,7 @@
             <a href="https://github.com/anandreddy1986" target="_blank">GitHub</a>
             <a href="https://www.linkedin.com/in/anand-reddy-4331a213/" target="_blank">LinkedIn</a>
             <a href="https://presalesforce.wordpress.com" target="_blank">Blog</a>
-            <a href="https://www.redhat.com" target="_blank">Red Hat</a>
+            <a href="https://opensource.org" target="_blank">OSI</a>
         </div>
         <p class="footer-copy">
             &copy; 2026 Anand Reddy | OpenSource LaunchPad | Built with open source principles
